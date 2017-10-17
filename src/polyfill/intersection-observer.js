@@ -18,7 +18,7 @@
     'use strict';
 
     // For use in serverside rendered apps
-    if (window !== undefined) return;
+    if (window === undefined) return;
 
 
     // Exits early if all IntersectionObserver and IntersectionObserverEntry
