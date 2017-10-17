@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "removeComments": true,
+    "allowJs": true,
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
