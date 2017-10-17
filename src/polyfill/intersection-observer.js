@@ -20,7 +20,8 @@
 
     // Exits early if all IntersectionObserver and IntersectionObserverEntry
     // features are natively supported.
-    if ('IntersectionObserver' in window &&
+    if ( window && document &&
+    'IntersectionObserver' in window &&
     'IntersectionObserverEntry' in window &&
     'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
 
