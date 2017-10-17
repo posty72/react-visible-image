@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>My React App</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -10,13 +11,17 @@
             display: flex;
             align-content: center;
             flex-direction: column;
+            max-width: 100%;
         }
 
         .image-container {
+            position: relative;
             width: 800px;
-            height: 600px;
-            padding: 20px;
-            margin: 0 auto;
+            min-height: 100px;
+            max-width: 100%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background-color: #ededed;
         }
 
         .image-container img {
@@ -35,6 +40,7 @@
             justify-content: center;
             min-height: 300px;
             width: 100%;
+            margin-bottom: 20px;
 
             background-size: cover;
         }
