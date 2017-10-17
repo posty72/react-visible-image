@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from 'react';
+import './polyfill/intersection-observer';
 export interface BaseProps {
     className?: string;
     shouldShow?: boolean;

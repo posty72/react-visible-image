@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './polyfill/intersection-observer'
 
 export interface BaseProps {
     className?: string
@@ -47,13 +48,14 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
     getClassName(): string {
         const { className, loadingClassName } = this.props;
+        console.log(loadingClassName);
         const loadingClass: string = loadingClassName || 'is-loading';
         const { isVisible } = this.state;
 
         if (!isVisible && className) {
-            return `${className} ${loadingClassName}`;
+            return `${className} ${loadingClass}`;
         } else if (!isVisible) {
-            return loadingClassName;
+            return loadingClass;
         }
 
         return className || '';
@@ -76,7 +78,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
                     // Load full image in the background first
                     const imageLoading: any = new Image();
                     imageLoading.src = image;
-                    imageLoading.onload = this.showImage;
+                    imageLoading.onload = () => this.showImage();
                 } else {
                     this.showImage();
                 }

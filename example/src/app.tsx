@@ -17,9 +17,8 @@ class App extends React.Component {
             images.push(
                 <div className="image-container" key={index}>
                     <Image
-                        shouldShow={true}
-                        initialImage={`https://unsplash.it/40/30/?image=${index}`}
-                        image={`https://unsplash.it/800/600?image=${index}`}
+                        initialImage={`https://picsum.photos/40/30/?image=${index}`}
+                        image={`https://picsum.photos/800/600?image=${index}`}
                     />
                 </div>
             );
@@ -38,8 +37,7 @@ class App extends React.Component {
                 <BackgroundImage
                     tagType="section"
                     className="background-image"
-                    initialImage={`https://unsplash.it/75/25?image=${index}`}
-                    image={`https://unsplash.it/1500/500?image=${index}`}
+                    image={`https://picsum.photos/1500/500?image=${index}`}
                     key={index}
                 >
                 <p>Content</p>
