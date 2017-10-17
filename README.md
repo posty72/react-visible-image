@@ -23,7 +23,7 @@ class App extends React.Component {
                 <BackgroundImage
                     tagType="section"
                     className="background-image"
-                    image="path/to/image.jpg)"
+                    image="path/to/image.jpg"
                 >
                     <p>Content</p>
                 </BackgroundImage>
