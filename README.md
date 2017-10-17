@@ -40,20 +40,21 @@ class App extends React.Component {
 - Firefox 55+
 - Edge 15+
 - Opera 47+
+- Safari\* (includes iOS)
+
+\*Using the included polyfill
 
 ### Unsupported
 - Internet Explorer
-- \*Safari (includes iOS)
 
-\*In development as of October 2017
 
 ## Testing
 _Coming soon_
 
-## Options
 
+## Usage
 
-### Global
+### BackgroundImage and Image
 
 - `shouldShow`
 Overrides the internal state of `BackgroundImage|Image`. If set to `true`, the image will always show. If set to `false`, either the `initialImage` will show or nothing will.
