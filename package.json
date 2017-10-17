@@ -15,20 +15,20 @@
     "main.js"
   ],
   "types": "./dist/index.d.ts",
-  "homepage": "https://github.com/pixelfusion",
+  "homepage": "https://github.com/pixelfusion/react-visible-image",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pixelfusion"
+    "url": "https://github.com/pixelfusion/react-visible-image"
   },
   "scripts": {
     "build": "rm -rf ./dist && webpack -p --config webpack.config.js",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "author": "Josh Post <josh@pixelfusion.co.nz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pixelfusion"
+    "url": "https://github.com/pixelfusion/react-visible-image/issues"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.2",

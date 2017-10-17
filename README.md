@@ -25,7 +25,7 @@ class App extends React.Component {
                     className="background-image"
                     image="path/to/image.jpg)"
                 >
-                <p>Content</p>
+                    <p>Content</p>
                 </BackgroundImage>
             </div>
         )
