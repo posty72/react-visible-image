@@ -1,6 +1,6 @@
 {
   "name": "react-visible-image",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Highly customizable react component for only images that are in the viewport",
   "keywords": [
     "react",
