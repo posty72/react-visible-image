@@ -38,7 +38,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
         if (this.props.shouldShow === true) {
             this.showImage();
-        } else if (this.props.shouldShow !== false && this.target) {
+        } else if (this.props.shouldShow !== false && this.target instanceof HTMLElement) {
             this.observer = new IntersectionObserver(this.handleIntersect.bind(this), {
                 rootMargin: '20px',
                 threshold: 0
