@@ -17,6 +17,7 @@ export declare class Base<T extends BaseProps> extends React.Component<T, BaseSt
     constructor();
     componentWillReceiveProps(nextProps?: any): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     getClassName(): string;
     showImage(): void;
     handleIntersect(entries: Array<any>): void;
