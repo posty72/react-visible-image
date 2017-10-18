@@ -13,8 +13,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 // For use in serverside rendered apps
-if (window !== undefined && document !== undefined) {
+if (typeof window !== 'undefined') {
     (function(window, document) {
         'use strict';
 
