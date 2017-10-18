@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Base, BaseProps } from './base'
+import { Base, BaseProps, propsToStrip } from './base'
 import cleanProperties from './utility/clean-props'
 
 export interface BackgroundImageProps extends BaseProps {
@@ -18,12 +18,8 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
         const attributes: object = cleanProperties(this.props, [
             'element',
             'children',
-            'shouldShow',
-            'initialImage',
-            'style',
-            'image',
-            'onVisible'
-        ]);
+            'style'
+        ].concat(propsToStrip));
 
         return (
             <Element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>

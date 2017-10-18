@@ -12,6 +12,7 @@ export interface BaseProps {
 export interface BaseState {
     isVisible: boolean;
 }
+export declare const propsToStrip: string[];
 export declare class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     observer: IntersectionObserver;
     target: Element;

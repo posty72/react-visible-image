@@ -21,7 +21,7 @@ class App extends React.Component {
 
                 // Will only apply the style.backgroundImage when user scrolls to it
                 <BackgroundImage
-                    tagType="section"
+                    element="section"
                     className="background-image"
                     image="path/to/image.jpg"
                 >
@@ -56,17 +56,20 @@ _Coming soon_
 
 ### BackgroundImage and Image
 
-- `shouldShow`
+- `shouldShow`: boolean
 Overrides the internal state of `BackgroundImage|Image`. If set to `true`, the image will always show. If set to `false`, either the `initialImage` will show or nothing will.
 
-- `loadingClassName`
+- `loadingClassName`: string
 Specifies a class to apply to the `BackgroundImage|Image` before the image has loaded
 
-- `initialImage`
+- `initialImage`: string
 An image to use before the image appears on screen. Useful for animation and search engine purposes.
+
+- `onVisible`: Function
+Calls the function when the element becomes visible. Useful for keeping the component as part of the app state alongside `shouldShow`
 
 ### BackgroundImage
 `BackgroundImage` can be used as a wrapper to contain children elements
 
-- `tagType`
-An element or HTML tag to use as the `BackgroundImage` HTML tag
+- `element`: string
+An HTML element to use as the `BackgroundImage` element

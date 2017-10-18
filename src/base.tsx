@@ -14,6 +14,14 @@ export interface BaseState {
     isVisible: boolean
 }
 
+export const propsToStrip = [
+    'loadingClassName',
+    'onVisible',
+    'image',
+    'initialImage',
+    'shouldShow',
+];
+
 export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     observer: IntersectionObserver = null
     target: Element = null
