@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { Base, BaseProps } from './base';
 export interface BackgroundImageProps extends BaseProps {
-    tagType?: any;
+    element?: any;
     style?: object;
     children?: any;
 }

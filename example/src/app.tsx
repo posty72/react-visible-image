@@ -35,9 +35,10 @@ class App extends React.Component {
 
             images.push(
                 <BackgroundImage
-                    tagType="section"
+                    element="section"
                     className="background-image"
                     image={`https://picsum.photos/1500/500?image=${index}`}
+                    onVisible={(data) => console.log(data)}
                     key={index}
                 >
                     <p>Content</p>

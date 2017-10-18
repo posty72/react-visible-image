@@ -11,7 +11,8 @@ export class Image extends Base<ImageProps> {
         const attributes: object = cleanProperties(this.props, [
             'image',
             'shouldShow',
-            'initialImage'
+            'initialImage',
+            'onVisible'
         ]);
 
         return (

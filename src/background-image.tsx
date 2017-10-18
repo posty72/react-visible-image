@@ -3,30 +3,31 @@ import { Base, BaseProps } from './base'
 import cleanProperties from './utility/clean-props'
 
 export interface BackgroundImageProps extends BaseProps {
-    tagType?: any
+    element?: any
     style?: object
     children?: any
 }
 
 export class BackgroundImage extends Base<BackgroundImageProps> {
     render(): JSX.Element {
-        const { children, initialImage, image, style, tagType } = this.props;
+        const { children, element, initialImage, image, style } = this.props;
         const backgroundImage: object = (this.state.isVisible) ?
                 { ...this.props.style, backgroundImage: `url(${image})` } :
                 { ...style, backgroundImage: `url(${initialImage})` };
-        const Element: any = tagType || 'div';
+        const Element: any = element || 'div';
         const attributes: object = cleanProperties(this.props, [
-            'tagType',
+            'element',
             'children',
             'shouldShow',
             'initialImage',
-            'style'
+            'style',
+            'onVisible'
         ]);
 
         return (
-            <Element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>
+            <this.props.element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>
                 {children}
-            </Element>
+            </this.props.element>
         );
     }
 }

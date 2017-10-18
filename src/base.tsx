@@ -3,10 +3,11 @@ import './polyfill/intersection-observer'
 
 export interface BaseProps {
     className?: string
-    shouldShow?: boolean
-    loadingClassName?: string,
-    initialImage?: string,
+    loadingClassName?: string
+    onVisible?: Function
     image: string
+    initialImage?: string
+    shouldShow?: boolean
 }
 
 export interface BaseState {
@@ -34,8 +35,6 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     }
 
     componentDidMount(): void {
-        console.log(this.target);
-
         if (this.props.shouldShow === true) {
             this.showImage();
         } else if (this.props.shouldShow !== false && this.target instanceof HTMLElement) {
@@ -48,8 +47,11 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps: BaseProps, prevState: BaseState): void {
         // Fire callback
+        if (this.props.onVisible && prevState.isVisible !== this.state.isVisible) {
+            this.props.onVisible();
+        }
     }
 
     getClassName(): string {

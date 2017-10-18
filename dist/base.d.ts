@@ -3,10 +3,11 @@ import * as React from 'react';
 import './polyfill/intersection-observer';
 export interface BaseProps {
     className?: string;
-    shouldShow?: boolean;
     loadingClassName?: string;
-    initialImage?: string;
+    onVisible?: Function;
     image: string;
+    initialImage?: string;
+    shouldShow?: boolean;
 }
 export interface BaseState {
     isVisible: boolean;
@@ -17,7 +18,7 @@ export declare class Base<T extends BaseProps> extends React.Component<T, BaseSt
     constructor();
     componentWillReceiveProps(nextProps?: any): void;
     componentDidMount(): void;
-    componentDidUpdate(): void;
+    componentDidUpdate(prevProps: BaseProps, prevState: BaseState): void;
     getClassName(): string;
     showImage(): void;
     handleIntersect(entries: Array<any>): void;
