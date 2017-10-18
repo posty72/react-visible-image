@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as VisibleImage from '../../dist/main.js'
+import * as VisibleImage from '../../src/index'
+// import * as VisibleImage from '../../dist/main'
 
 const NUM_IMAGES = 10;
 
@@ -19,6 +20,7 @@ class App extends React.Component {
                     <Image
                         initialImage={`https://picsum.photos/40/30/?image=${index}`}
                         image={`https://picsum.photos/800/600?image=${index}`}
+                        alt={`Image number ${index}`}
                     />
                 </div>
             );

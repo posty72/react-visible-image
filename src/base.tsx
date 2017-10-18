@@ -8,6 +8,12 @@ export interface BaseProps {
     image: string
     initialImage?: string
     shouldShow?: boolean
+    data?: any
+    role?: any
+    htmlFor?: any
+    id?: any
+    tabIndex?: any
+    title?: any
 }
 
 export interface BaseState {

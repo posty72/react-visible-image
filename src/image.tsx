@@ -2,7 +2,12 @@ import * as React from 'react'
 import { Base, BaseProps, propsToStrip } from './base'
 import cleanProperties from './utility/clean-props'
 
-export interface ImageProps extends BaseProps {}
+export interface ImageProps extends BaseProps {
+    alt?: any
+    height?: any
+    width?: any
+    poster?: any
+}
 
 export class Image extends Base<ImageProps> {
     render(): JSX.Element {
