@@ -34,6 +34,8 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     }
 
     componentDidMount(): void {
+        console.log(this.target);
+
         if (this.props.shouldShow === true) {
             this.showImage();
         } else if (this.props.shouldShow !== false && this.target) {
@@ -44,8 +46,6 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
             this.observer.observe(this.target);
         }
-
-        console.log(this.target);
     }
 
     componentDidUpdate() {
