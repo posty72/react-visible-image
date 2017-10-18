@@ -8,7 +8,6 @@ export class Image extends Base<ImageProps> {
     render(): JSX.Element {
         const { initialImage, image } = this.props;
         const imageSrc: string = (this.state.isVisible) ? image : initialImage;
-
         const attributes: object = cleanProperties(this.props, [
             'image',
             'shouldShow',

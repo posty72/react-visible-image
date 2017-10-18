@@ -15,7 +15,6 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
                 { ...this.props.style, backgroundImage: `url(${image})` } :
                 { ...style, backgroundImage: `url(${initialImage})` };
         const Element: any = tagType || 'div';
-
         const attributes: object = cleanProperties(this.props, [
             'tagType',
             'children',

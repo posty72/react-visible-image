@@ -40,7 +40,7 @@ class App extends React.Component {
                     image={`https://picsum.photos/1500/500?image=${index}`}
                     key={index}
                 >
-                <p>Content</p>
+                    <p>Content</p>
                 </BackgroundImage>
             );
         }

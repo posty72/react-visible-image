@@ -46,9 +46,12 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
         }
     }
 
+    componentDidUpdate() {
+        // Fire callback
+    }
+
     getClassName(): string {
         const { className, loadingClassName } = this.props;
-        console.log(loadingClassName);
         const loadingClass: string = loadingClassName || 'is-loading';
         const { isVisible } = this.state;
 
