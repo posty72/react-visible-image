@@ -21,13 +21,14 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
             'shouldShow',
             'initialImage',
             'style',
+            'image',
             'onVisible'
         ]);
 
         return (
-            <this.props.element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>
+            <Element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>
                 {children}
-            </this.props.element>
+            </Element>
         );
     }
 }
