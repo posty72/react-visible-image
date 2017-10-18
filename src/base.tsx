@@ -36,7 +36,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     componentDidMount(): void {
         if (this.props.shouldShow === true) {
             this.showImage();
-        } else if (this.props.shouldShow !== false) {
+        } else if (this.props.shouldShow !== false && this.target) {
             this.observer = new IntersectionObserver(this.handleIntersect.bind(this), {
                 rootMargin: '20px',
                 threshold: 0
@@ -44,6 +44,8 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
             this.observer.observe(this.target);
         }
+
+        console.log(this.target);
     }
 
     componentDidUpdate() {
