@@ -95,14 +95,10 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
         entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.intersectionRatio > 0) {
-                if (initialImage) {
-                    // Load full image in the background first
-                    const imageLoading: any = new Image();
-                    imageLoading.src = image;
-                    imageLoading.onload = () => this.showImage();
-                } else {
-                    this.showImage();
-                }
+                // Load full image in the background first
+                const imageLoading: any = new Image();
+                imageLoading.src = image;
+                imageLoading.onload = () => this.showImage();
             }
         });
     }

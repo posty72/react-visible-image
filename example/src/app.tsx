@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as VisibleImage from '../../src/index'
-// import * as VisibleImage from '../../dist/main'
+// import * as VisibleImage from '../../src/index'
+import * as VisibleImage from '../../dist/main'
 
 const NUM_IMAGES = 10;
 
