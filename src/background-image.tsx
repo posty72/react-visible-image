@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Base, BaseProps, propsToStrip } from './base'
-import cleanProperties from './utility/clean-props'
+import { cleanProps } from './utility/clean-props'
 
 export interface BackgroundImageProps extends BaseProps {
     element?: any
@@ -9,22 +9,36 @@ export interface BackgroundImageProps extends BaseProps {
 }
 
 export class BackgroundImage extends Base<BackgroundImageProps> {
+
+    getImage(): object {
+        const { image, initialImage, style } = this.props
+
+        if (!this.props.image) {
+            return {}
+        }
+
+        if (this.state.isVisible) {
+            return { ...this.props.style, backgroundImage: `url(${image})` }
+        }
+
+        return { ...style, backgroundImage: `url(${initialImage})` }
+    }
+
     render(): JSX.Element {
-        const { children, element, initialImage, image, style } = this.props;
-        const backgroundImage: object = (this.state.isVisible) ?
-                { ...this.props.style, backgroundImage: `url(${image})` } :
-                { ...style, backgroundImage: `url(${initialImage})` };
-        const Element: any = element || 'div';
-        const attributes: object = cleanProperties(this.props, [
+        const { children, element, initialImage, image, style } = this.props
+        const backgroundImage = this.getImage()
+        const Element: any = element || 'div'
+        const backgroundImagePropsToStrip = [
             'element',
             'children',
             'style'
-        ].concat(propsToStrip));
+        ].concat(propsToStrip)
+        const attributes: object = cleanProps(this.props, backgroundImagePropsToStrip)
 
         return (
-            <Element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input; }}>
+            <Element {...attributes} className={this.getClassName()} style={backgroundImage} ref={(input) => { this.target = input }}>
                 {children}
             </Element>
-        );
+        )
     }
 }
