@@ -13,7 +13,7 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
     getImage(): object {
         const { image, initialImage, style } = this.props
 
-        if (!this.props.image) {
+        if (this.state.isVisible && !initialImage) {
             return {}
         }
 
