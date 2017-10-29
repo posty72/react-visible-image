@@ -1,5 +1,7 @@
 # React Visible Images
-Load images only when they appear on the page
+[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/pixelfusion/react-visible-image)
+
+Highly customizable react component for only images that are in the viewport
 
 ## Requirements
 - React
