@@ -1,1 +1,1 @@
-export default function cleanProperties(props: any, toRemove: Array<string>): object;
+export declare function cleanProps(props: any, toRemove: Array<string>): object;

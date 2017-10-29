@@ -3,27 +3,30 @@ import { Base, BaseProps, propsToStrip } from './base'
 import { cleanProps } from './utility/clean-props'
 
 export interface BackgroundImageProps extends BaseProps {
-    element?: any
+    element?: JSX.Element | string
     style?: object
     children?: any
 }
 
 export class BackgroundImage extends Base<BackgroundImageProps> {
 
+    // Helper
     getImage(): object {
         const { image, initialImage, style } = this.props
+        const {isVisible} = this.state
 
-        if (this.state.isVisible && !initialImage) {
-            return {}
+        if (!isVisible && initialImage) {
+            return { ...style, backgroundImage: `url(${initialImage})` }
         }
 
-        if (this.state.isVisible) {
-            return { ...this.props.style, backgroundImage: `url(${image})` }
+        if (isVisible && image) {
+            return { ...style, backgroundImage: `url(${image})` }
         }
 
-        return { ...style, backgroundImage: `url(${initialImage})` }
+        return null
     }
 
+    // Render
     render(): JSX.Element {
         const { children, element, initialImage, image, style } = this.props
         const backgroundImage = this.getImage()
