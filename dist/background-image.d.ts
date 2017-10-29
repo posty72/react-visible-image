@@ -6,5 +6,6 @@ export interface BackgroundImageProps extends BaseProps {
     children?: any;
 }
 export declare class BackgroundImage extends Base<BackgroundImageProps> {
+    getImage(): object;
     render(): JSX.Element;
 }

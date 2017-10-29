@@ -2,10 +2,10 @@
 import * as React from 'react';
 import './polyfill/intersection-observer';
 export interface BaseProps {
+    image: string;
     className?: string;
     loadingClassName?: string;
     onVisible?: Function;
-    image: string;
     initialImage?: string;
     shouldShow?: boolean;
     data?: any;
