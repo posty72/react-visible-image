@@ -1,18 +1,19 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     entry: './src/index.tsx',
     output: {
         filename: '[name].js',
-        path: __dirname + '/dist/',
+        path: path.resolve(__dirname + '/dist'),
         libraryTarget: 'commonjs-module'
     },
     devtool: 'source-map',
     module: {
         rules: [
             {
-                test: /.tsx?$/,
-                loader: 'awesome-typescript-loader',
+                test: /.(ts|tsx)?$/,
+                loader: 'ts-loader',
                 exclude: /(node_modules|dist)/
             },
             {
@@ -23,15 +24,11 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            output: {
-                comments: false,
-                beautify: false,
-            }
-        })
-    ]
+        extensions: [
+            '.ts',
+            '.tsx',
+            '.js',
+            '.json'
+        ]
+    }
 };

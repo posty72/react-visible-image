@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./",
     "removeComments": true,
     "declaration": true,
     "module": "es6",

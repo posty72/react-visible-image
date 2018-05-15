@@ -1,6 +1,7 @@
 {
   "extends": [
     "tslint-react",
+    "tslint-eslint-rules",
     "tslint-consistent-codestyle"
   ],
   "rules": {
@@ -94,6 +95,7 @@
     ],
     "no-use-before-declare": true,
     "no-var-keyword": true,
+    "one-variable-per-declaration": true,
     "one-line": [
       true,
       "check-catch",
@@ -111,7 +113,7 @@
       true,
       "consistent-as-needed"
     ],
-    "ordered-imports": true,
+    "ordered-imports": false,
     "prefer-const": true,
     "prefer-switch": true,
     "prefer-template": true,
@@ -126,6 +128,7 @@
       true,
       "never"
     ],
+    "sort-imports": true,
     "switch-default": true,
     "switch-final-break": [
       true,

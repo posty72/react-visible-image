@@ -1,6 +1,5 @@
-
 /**
- * cleanProperties - Removes properties from an object
+ * cleanProps - Removes properties from an object
  *
  * @param  {object} props: any          props object to be cleaned
  * @param  {array<string>} toRemove:    strings to be matched and removed

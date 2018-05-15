@@ -1,5 +1,5 @@
+import 'intersection-observer'
 import * as React from 'react'
-import './polyfill/intersection-observer'
 
 export interface BaseProps {
     className?: string
@@ -25,81 +25,81 @@ export const propsToStrip = [
     'onVisible',
     'image',
     'initialImage',
-    'shouldShow',
-];
+    'shouldShow'
+]
 
 export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     observer: IntersectionObserver = null
     target: Element = null
-
-    constructor() {
-        super();
-
-        this.state = {
-            isVisible: false
-        };
+    state: BaseState = {
+        isVisible: false
     }
 
-    componentWillReceiveProps(nextProps ?: any): void {
+    // Lifecycle
+    componentWillReceiveProps(nextProps?: any): void {
         if (this.props.shouldShow !== nextProps.shouldShow) {
             this.setState({
                 isVisible: nextProps.shouldShow
-            });
+            })
         }
     }
 
     componentDidMount(): void {
         if (this.props.shouldShow === true) {
-            this.showImage();
+            this.showImage()
         } else if (this.target instanceof HTMLElement) {
             this.observer = new IntersectionObserver(this.handleIntersect.bind(this), {
                 rootMargin: '20px',
                 threshold: 0
-            });
+            })
 
-            this.observer.observe(this.target);
+            this.observer.observe(this.target)
         }
     }
 
     componentDidUpdate(prevProps: BaseProps, prevState: BaseState): void {
         // Fire callback
         if (this.props.onVisible && prevState.isVisible !== this.state.isVisible) {
-            this.props.onVisible();
+            this.props.onVisible()
         }
     }
 
-    getClassName(): string {
-        const { className, loadingClassName } = this.props;
-        const loadingClass: string = loadingClassName || 'is-loading';
-        const { isVisible } = this.state;
+    // Helper
+    public getClassName(): string {
+        const { className, loadingClassName } = this.props
+        const loadingClass: string = loadingClassName || 'is-loading'
+        const { isVisible } = this.state
 
         if (!isVisible && className) {
-            return `${className} ${loadingClass}`;
-        } else if (!isVisible) {
-            return loadingClass;
+            return `${className} ${loadingClass}`
         }
 
-        return className || '';
+        if (!isVisible) {
+            return loadingClass
+        }
+
+        return className || ''
     }
 
-    showImage(): void {
+    public showImage(): void {
         this.setState({
             isVisible: true
         }, () => {
-            this.observer.unobserve(this.target);
-        });
+            this.observer.unobserve(this.target)
+        })
     }
 
-    handleIntersect(entries: Array<any>): void {
-        const { initialImage, image } = this.props;
+    // Handler
+    public handleIntersect(entries: Array<any>): void {
+        const { initialImage, image } = this.props
 
         entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.intersectionRatio > 0) {
                 // Load full image in the background first
-                const imageLoading: any = new Image();
-                imageLoading.src = image;
-                imageLoading.onload = () => this.showImage();
+                const imageLoading: any = new Image()
+                imageLoading.src = image
+                imageLoading.onload = () => this.showImage()
             }
-        });
+        })
     }
 }
