@@ -3,7 +3,9 @@
     "outDir": "./",
     "removeComments": true,
     "declaration": true,
-    "module": "es6",
+    "module": "esnext",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "target": "es5",
     "lib": [
       "es6",

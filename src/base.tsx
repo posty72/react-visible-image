@@ -1,4 +1,3 @@
-import 'intersection-observer'
 import * as React from 'react'
 
 export interface BaseProps {
@@ -33,6 +32,14 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     target: Element = null
     state: BaseState = {
         isVisible: false
+    }
+
+    constructor(props: null) {
+        super(props)
+
+        if (typeof window !== undefined && !('IntersectionObserver' in window)) {
+            this.importIntersectionObserver()
+        }
     }
 
     // Lifecycle
@@ -101,5 +108,9 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
                 imageLoading.onload = () => this.showImage()
             }
         })
+    }
+
+    private async importIntersectionObserver() {
+        await import('intersection-observer')
     }
 }
