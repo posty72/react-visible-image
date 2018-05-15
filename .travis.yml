@@ -1,3 +1,13 @@
+language: node_js
+node_js:
+  - "8"
+
+install:
+  - npm ci
+
+script:
+  - npm run build
+
 deploy:
   provider: npm
   email: $EMAIL_ADDRESS
@@ -5,4 +15,11 @@ deploy:
   skip_cleanup: true
   tag: next
   on:
+    branch: master
     tags: true
+notifications:
+  email:
+    recipents:
+      - $ADMIN_EMAIL
+    on_success: always
+    on_failure: always
