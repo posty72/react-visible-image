@@ -1,14 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-// import * as VisibleImage from '../../src/index'
-import * as VisibleImage from '../../dist/main'
+import * as VisibleImage from '../../'
 
 const NUM_IMAGES = 10
 
 const { BackgroundImage, Image } = VisibleImage
 
 class App extends React.Component {
-    renderImages()  {
+    renderImages() {
         const images = []
         let index = 0
 
@@ -67,9 +66,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="container-fluid content">
-            <h1>React Visible Images</h1>
-            {this.renderImages()}
-            {this.renderBackgroundImages()}
+                <h1>React Visible Images</h1>
+                {this.renderImages()}
+                {this.renderBackgroundImages()}
             </div>
         )
     }
