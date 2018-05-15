@@ -3,6 +3,7 @@ node_js:
   - "9"
 
 install:
+  - npm i -g npm@6.0.1
   - npm ci
 
 script:
