@@ -14,7 +14,6 @@ deploy:
   email: $EMAIL_ADDRESS
   api_key: $NPM_AUTH_TOKEN
   skip_cleanup: true
-  tag: next
   on:
     branch: master
     tags: true
