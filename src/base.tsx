@@ -17,6 +17,7 @@ export interface BaseProps {
 
 export interface BaseState {
     isVisible: boolean
+    hasIntersectionObserver: boolean
 }
 
 export const propsToStrip = [
@@ -31,15 +32,12 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     observer: IntersectionObserver = null
     target: Element = null
     state: BaseState = {
-        isVisible: false
+        isVisible: false,
+        hasIntersectionObserver: false
     }
 
     constructor(props: null) {
         super(props)
-
-        if (typeof window !== undefined && !('IntersectionObserver' in window)) {
-            this.importIntersectionObserver()
-        }
     }
 
     // Lifecycle
@@ -52,6 +50,13 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     }
 
     componentDidMount(): void {
+        // Make sure we have intersection observer
+        if (typeof window !== undefined && 'IntersectionObserver' in window) {
+            this.setState({
+                hasIntersectionObserver: true
+            })
+        }
+
         if (this.props.shouldShow === true) {
             this.showImage()
         } else if (this.target instanceof HTMLElement) {
@@ -108,9 +113,5 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
                 imageLoading.onload = () => this.showImage()
             }
         })
-    }
-
-    private async importIntersectionObserver() {
-        await import('intersection-observer')
     }
 }

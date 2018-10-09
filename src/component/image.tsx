@@ -12,7 +12,8 @@ export interface ImageProps extends BaseProps {
 export class Image extends Base<ImageProps> {
     render(): JSX.Element {
         const { initialImage, image } = this.props
-        const imageSrc: string = (this.state.isVisible) ? image : initialImage
+        const { isVisible, hasIntersectionObserver } = this.state
+        const imageSrc: string = (isVisible && hasIntersectionObserver) ? image : initialImage
         const attributes: object = cleanProps(this.props, propsToStrip)
 
         return (

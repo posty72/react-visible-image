@@ -13,13 +13,13 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
     // Helper
     getImage(): object {
         const { image, initialImage, style } = this.props
-        const { isVisible } = this.state
+        const { hasIntersectionObserver, isVisible } = this.state
 
-        if (!isVisible && initialImage) {
+        if (!isVisible && initialImage && hasIntersectionObserver) {
             return { ...style, backgroundImage: `url(${initialImage})` }
         }
 
-        if (isVisible && image) {
+        if (isVisible && image || !hasIntersectionObserver) {
             return { ...style, backgroundImage: `url(${image})` }
         }
 

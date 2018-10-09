@@ -20,6 +20,6 @@ deploy:
 notifications:
   email:
     recipents:
-      - $ADMIN_EMAIL
+      - $EMAIL_ADDRESS
     on_success: always
     on_failure: always

@@ -1,9 +1,12 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
 
 module.exports = {
-    entry: './example/src/app.tsx',
+    entry: p('./src/app.tsx'),
     output: {
-        filename: './example/build/app.js'
+        filename: 'app.[hash].js',
+        path: p('./build/')
     },
     devtool: 'source-map',
     module: {
@@ -13,9 +16,19 @@ module.exports = {
                 loader: 'ts-loader',
                 exclude: /node_modules/,
                 options: {
-                    configFile: 'example/tsconfig.json'
+                    configFile: p('./tsconfig.json')
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            template: './example/index.html'
+        }),
+    ]
 };
+
+function p(f) {
+    return path.resolve(__dirname, f)
+}

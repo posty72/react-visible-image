@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as VisibleImage from '../../'
+import * as VisibleImage from '../../dist/main'
 
 const NUM_IMAGES = 10
 
@@ -15,7 +15,7 @@ class App extends React.Component {
             index++
 
             images.push(
-                <div className="image-container" key={index}>
+                <div className="image-container" key={`image-${index}`}>
                     <Image
                         initialImage={`https://picsum.photos/40/30/?image=${index}`}
                         image={`https://picsum.photos/800/600?image=${index}`}
@@ -42,7 +42,7 @@ class App extends React.Component {
                     image={`https://picsum.photos/1500/500?image=${index}`}
                     initialImage={`https://picsum.photos/15/5?image=${index}`}
                     onVisible={(data) => console.log(data)}
-                    key={index}
+                    key={`BackgroundImage-${index}`}
                 >
                     <p>Content</p>
                 </BackgroundImage>
@@ -54,7 +54,7 @@ class App extends React.Component {
                 element="section"
                 className="background-image"
                 image={null}
-                key={index}
+                key={`BackgroundImage-${index}`}
             >
                 <p>Content</p>
             </BackgroundImage>
