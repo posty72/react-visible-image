@@ -6,7 +6,6 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname + '/dist'),
-        libraryTarget: 'commonjs-module'
     },
     devtool: 'source-map',
     module: {
@@ -15,11 +14,6 @@ module.exports = {
                 test: /.(ts|tsx)?$/,
                 loader: 'ts-loader',
                 exclude: /(node_modules|dist)/
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'source-map-loader'
             }
         ]
     },
