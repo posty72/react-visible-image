@@ -64,18 +64,18 @@ _Coming soon_
 
 ### BackgroundImage and Image
 
-| Prop | Type | Description |
-|---
-| **shouldShow** | boolean | Overrides the internal state of `BackgroundImage|Image`. If set to `true`, the image will always show. If set to `false`, either the `initialImage` will show or nothing will. |
-| **loadingClassName** | string | Specifies a class to apply to the `BackgroundImage|Image` before the image has loaded |
-| **initialImage** | string | An image to use before the image appears on screen. Useful for animation and search engine purposes. |
-| **onVisible** | Function | Calls the function when the element becomes visible. Useful for keeping the component as part of the app state alongside `shouldShow` |
+| Prop                 | Type     | Description                                                                                                                                                                    |
+| -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **shouldShow**       | boolean  | Overrides the internal state of `BackgroundImage|Image`. If set to `true`, the image will always show. If set to `false`, either the `initialImage` will show or nothing will. |
+| **loadingClassName** | string   | Specifies a class to apply to the `BackgroundImage|Image` before the image has loaded                                                                                          |
+| **initialImage**     | string   | An image to use before the image appears on screen. Useful for animation and search engine purposes.                                                                           |
+| **onVisible**        | Function | Calls the function when the element becomes visible. Useful for keeping the component as part of the app state alongside `shouldShow`                                          |
 ---
 
 ### BackgroundImage only
 `BackgroundImage` can be used as a wrapper to contain children elements
 
 | Prop | Type | Description |
-|---
+|---|--|--|
 | **element** | string | An HTML element to use as the `BackgroundImage` element |
-|---
+
