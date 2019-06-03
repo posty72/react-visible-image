@@ -103,7 +103,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
     // Handler
     public handleIntersect(entries: Array<any>): void {
-        const { initialImage, image } = this.props
+        const { image } = this.props
 
         entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.intersectionRatio > 0) {

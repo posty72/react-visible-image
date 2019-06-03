@@ -28,7 +28,7 @@ export class BackgroundImage extends Base<BackgroundImageProps> {
 
     // Render
     render(): JSX.Element {
-        const { children, element, initialImage, image, style } = this.props
+        const { children, element } = this.props
         const backgroundImage = this.getImage()
         const Element: any = element || 'div'
         const backgroundImagePropsToStrip = [
