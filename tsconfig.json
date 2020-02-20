@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./",
+    "outDir": "./dist",
     "removeComments": true,
     "declaration": true,
     "module": "esnext",
