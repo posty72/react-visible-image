@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react"
 
 export interface BaseProps {
     className?: string
@@ -21,11 +21,11 @@ export interface BaseState {
 }
 
 export const propsToStrip = [
-    'loadingClassName',
-    'onVisible',
-    'image',
-    'initialImage',
-    'shouldShow'
+    "loadingClassName",
+    "onVisible",
+    "image",
+    "initialImage",
+    "shouldShow"
 ]
 
 export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
@@ -51,7 +51,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
     componentDidMount(): void {
         // Make sure we have intersection observer
-        if (typeof window !== undefined && 'IntersectionObserver' in window) {
+        if (typeof window !== undefined && "IntersectionObserver" in window) {
             this.setState({
                 hasIntersectionObserver: true
             })
@@ -60,10 +60,13 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
         if (this.props.shouldShow === true) {
             this.showImage()
         } else if (this.target instanceof HTMLElement) {
-            this.observer = new IntersectionObserver(this.handleIntersect.bind(this), {
-                rootMargin: '20px',
-                threshold: 0
-            })
+            this.observer = new IntersectionObserver(
+                this.handleIntersect.bind(this),
+                {
+                    rootMargin: "20px",
+                    threshold: 0
+                }
+            )
 
             this.observer.observe(this.target)
         }
@@ -71,7 +74,10 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
 
     componentDidUpdate(prevProps: BaseProps, prevState: BaseState): void {
         // Fire callback
-        if (this.props.onVisible && prevState.isVisible !== this.state.isVisible) {
+        if (
+            this.props.onVisible &&
+            prevState.isVisible !== this.state.isVisible
+        ) {
             this.props.onVisible()
         }
     }
@@ -79,7 +85,7 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
     // Helper
     public getClassName(): string {
         const { className, loadingClassName } = this.props
-        const loadingClass: string = loadingClassName || 'is-loading'
+        const loadingClass: string = loadingClassName || "is-loading"
         const { isVisible } = this.state
 
         if (!isVisible && className) {
@@ -90,15 +96,18 @@ export class Base<T extends BaseProps> extends React.Component<T, BaseState> {
             return loadingClass
         }
 
-        return className || ''
+        return className || ""
     }
 
     public showImage(): void {
-        this.setState({
-            isVisible: true
-        }, () => {
-            this.observer.unobserve(this.target)
-        })
+        this.setState(
+            {
+                isVisible: true
+            },
+            () => {
+                this.observer.unobserve(this.target)
+            }
+        )
     }
 
     // Handler

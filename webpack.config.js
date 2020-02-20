@@ -1,28 +1,23 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require("webpack")
+const path = require("path")
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: "./src/index.tsx",
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname + '/dist'),
+        filename: "[name].js",
+        path: path.resolve(__dirname + "/dist")
     },
-    devtool: 'source-map',
+    devtool: "source-map",
     module: {
         rules: [
             {
                 test: /.(ts|tsx)?$/,
-                loader: 'ts-loader',
+                loader: "ts-loader",
                 exclude: /(node_modules|dist)/
             }
         ]
     },
     resolve: {
-        extensions: [
-            '.ts',
-            '.tsx',
-            '.js',
-            '.json'
-        ]
+        extensions: [".ts", ".tsx", ".js", ".json"]
     }
-};
+}

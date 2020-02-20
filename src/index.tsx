@@ -1,2 +1,2 @@
-export * from './component/image'
-export * from './component/background-image'
+export * from "./component/image"
+export * from "./component/background-image"

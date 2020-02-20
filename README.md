@@ -1,12 +1,15 @@
 # React Visible Images
+
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/pixelfusion/react-visible-image)
 
 Highly customizable and lightweight React component that only displays images that are in (or have been in) the viewport
 
 ## Requirements
-- React
+
+-   React
 
 ## Installation
+
 ```
 npm install react-visible-image --save-dev
 ```
@@ -31,34 +34,40 @@ const ContentBlock = () => (
 ```
 
 ## Browser Support
+
 Most browsers are supported, and Safari is supporting by importing the optional polyfill. If the `IntersectionObserver` isn't available in a browser, react-visible-image will simple render the image normally.
 
 ### Supported
-- Chrome 50+
-- Firefox 55+
-- Edge 15+
-- Opera 47+
+
+-   Chrome 50+
+-   Firefox 55+
+-   Edge 15+
+-   Opera 47+
 
 ### Unsupported
-- Safari\* (includes iOS)
-- Internet Explorer
+
+-   Safari\* (includes iOS)
+-   Internet Explorer
 
 \*Supported using the optional polyfill
 
 ### Polyfill
+
 If you need to support Safari, include the polyfill by installing it using:
+
 ```
 npm install intersection-observer
 ```
 
 Then add it to your app with:
+
 ```
 import 'intersection-observer';
 ```
 
 ## Testing
-_Coming soon_
 
+_Coming soon_
 
 ## Usage
 
@@ -70,12 +79,13 @@ _Coming soon_
 | **loadingClassName** | string   | Specifies a class to apply to the `BackgroundImage|Image` before the image has loaded                                                                                          |
 | **initialImage**     | string   | An image to use before the image appears on screen. Useful for animation and search engine purposes.                                                                           |
 | **onVisible**        | Function | Calls the function when the element becomes visible. Useful for keeping the component as part of the app state alongside `shouldShow`                                          |
+
 ---
 
 ### BackgroundImage only
+
 `BackgroundImage` can be used as a wrapper to contain children elements
 
-| Prop | Type | Description |
-|---|--|--|
+| Prop        | Type   | Description                                             |
+| ----------- | ------ | ------------------------------------------------------- |
 | **element** | string | An HTML element to use as the `BackgroundImage` element |
-
