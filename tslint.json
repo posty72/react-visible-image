@@ -41,7 +41,7 @@
       }
     ],
     "newline-before-return": true,
-    "no-any": false,
+    "no-any": true,
     "no-arg": true,
     "no-as-type-assertion": true,
     "no-bitwise": true,

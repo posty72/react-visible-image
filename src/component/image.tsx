@@ -1,31 +1,39 @@
 import * as React from "react"
-import { Base, BaseProps, propsToStrip } from "../base"
-import { cleanProps } from "../utility/clean-props"
+import { useShown } from "../hook/use-shown"
 
-export interface ImageProps extends BaseProps {
-    alt?: string
-    height?: string | number
-    width?: string | number
-    poster?: any
+type ImgProps = JSX.IntrinsicElements["img"]
+export interface ImageProps extends ImgProps {
+    onShown?: () => void
+    initialSrc?: string
+    forceShow?: boolean
+    loadingClassName?: string
 }
 
-export class Image extends Base<ImageProps> {
-    render(): JSX.Element {
-        const { initialImage, image } = this.props
-        const { isVisible, hasIntersectionObserver } = this.state
-        const imageSrc =
-            isVisible && hasIntersectionObserver ? image : initialImage
-        const attributes = cleanProps(this.props, propsToStrip)
+export const VisibleImage: React.FunctionComponent<ImageProps> = ({
+    initialSrc,
+    forceShow,
+    loadingClassName,
+    className,
+    onShown,
+    ...attributes
+}) => {
+    const imageRef = React.useRef<HTMLImageElement>()
+    const isVisible = useShown(imageRef)
 
-        return (
-            <img
-                {...attributes}
-                className={this.getClassName()}
-                src={imageSrc}
-                ref={element => {
-                    this.target = element
-                }}
-            />
-        )
-    }
+    const show = isVisible || forceShow
+    const initialImageSrc = initialSrc ? initialSrc : ""
+    const imgSrc = show ? attributes.src : initialImageSrc
+    const getClass = () =>
+        !show && loadingClassName
+            ? `${loadingClassName} ${className}`
+            : className
+
+    return (
+        <img
+            {...attributes}
+            className={getClass()}
+            ref={imageRef}
+            src={imgSrc}
+        />
+    )
 }

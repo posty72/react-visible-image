@@ -1,13 +1,18 @@
 const webpack = require("webpack")
 const path = require("path")
+const package = require("./package.json")
 
 module.exports = {
     entry: "./src/index.tsx",
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname + "/dist")
+        path: path.resolve(__dirname + "/dist"),
+        library: package.name,
+        libraryTarget: "umd"
     },
-    devtool: "source-map",
+    externals: {
+        react: "react"
+    },
     module: {
         rules: [
             {
@@ -19,5 +24,8 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
+    },
+    optimization: {
+        minimize: true
     }
 }

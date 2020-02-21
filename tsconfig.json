@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "removeComments": true,
     "declaration": true,
-    "module": "esnext",
+    "module": "CommonJS",
     "importHelpers": true,
     "moduleResolution": "node",
     "target": "es5",

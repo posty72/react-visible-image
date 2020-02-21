@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-  - "9"
+  - "12"
 
 install:
-  - npm i -g npm@6.0.1
   - npm ci
 
 script:
@@ -15,11 +14,11 @@ deploy:
   api_key: $NPM_AUTH_TOKEN
   skip_cleanup: true
   on:
-    branch: master
     tags: true
+
 notifications:
   email:
-    recipents:
+    recipients:
       - $EMAIL_ADDRESS
     on_success: always
     on_failure: always
