@@ -1,54 +1,28 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+# React Visible Image
 
-<!-- PROJECT LOGO -->
+React Visible Image is designed to solve the problem of loading full-sized images before they're seen on the screen, which in some cases could be not at all. It uses the the IntersectionObserver API to determine if a user has scrolled past the image or not.·
+
 <br />
-<p align="center">
-  <h3 align="center">React Visible Image</h3>
 
-  <p align="center">
-    Only show
-    <br />
-    <br />
-    ·
-    <a href="https://github.com/posty72/react-visible-image/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/posty72/react-visible-image/issues">Request Feature</a>
-  </p>
-</p>
-
-<!-- TABLE OF CONTENTS -->
+<a href="https://github.com/posty72/react-visible-image/issues">Report Bug</a>
+·
+<a href="https://github.com/posty72/react-visible-image/issues">Request Feature</a>
 
 ## Table of Contents
 
--   [About the Project](#about-the-project)
-    -   [Built With](#built-with)
 -   [Getting Started](#getting-started)
     -   [Prerequisites](#prerequisites)
     -   [Installation](#installation)
 -   [Usage](#usage)
--   [Roadmap](#roadmap)
+-   [Poyfill](#polyfill)
 -   [Contributing](#contributing)
 -   [License](#license)
 -   [Contact](#contact)
 -   [Acknowledgements](#acknowledgements)
 
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-React Visible Image is designed to solve the problem of loading full-sized images before they're seen on the screen, which in some cases could be not at all. It uses the the IntersectionObserver API to determine if a user has scrolled past the image or not.
-
-<!-- GETTING STARTED -->
-
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To install React Visible Image into your React app, follow these steps.
 
 ### Prerequisites
 
@@ -145,24 +119,12 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
-
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-<!-- CONTACT -->
 
 ## Contact
 
 Josh Post - [@posty72](https://twitter.com/posty72)
 
 Project Link: [https://github.com/posty72/react-visible-image](https://github.com/posty72/react-visible-image)
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## Acknowledgements
-
--   []()
--   []()
--   []()
