@@ -1,2 +1,2 @@
 export * from "./component/image"
-export * from "./hook/use-shown"
+export * from "./hook/use-visible"
