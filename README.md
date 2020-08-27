@@ -1,52 +1,116 @@
-# React Visible Images
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/pixelfusion/react-visible-image)
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <h3 align="center">React Visible Image</h3>
 
-Lightweight React component that only displays images that are in (or have been in) the viewport
+  <p align="center">
+    Only show
+    <br />
+    <br />
+    ·
+    <a href="https://github.com/posty72/react-visible-image/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/posty72/react-visible-image/issues">Request Feature</a>
+  </p>
+</p>
 
-## Installation
+<!-- TABLE OF CONTENTS -->
 
-```
+## Table of Contents
+
+-   [About the Project](#about-the-project)
+    -   [Built With](#built-with)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+-   [Usage](#usage)
+-   [Roadmap](#roadmap)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Contact](#contact)
+-   [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+React Visible Image is designed to solve the problem of loading full-sized images before they're seen on the screen, which in some cases could be not at all. It uses the the IntersectionObserver API to determine if a user has scrolled past the image or not.
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+-   npm
+-   React
+-   [Polyfill](#polyfill) (only if your supporting browsers that don't provide the [IntersectionObserver API](https://caniuse.com/#feat=intersectionobserver))
+
+### Installation
+
+2. Install NPM packages
+
+```sh
 npm install react-visible-image
 ```
 
 ## Usage
 
-### Component
+### Using the component
 
 The main output of this package is a simple `VisibleImage` component that you can use as a drop-in replacement for normal `<img />` tags.
 
-```
+```js
 import { VisibleImage } from `react-visible-image`
 
 const ContentBlock = () => (
-    <div>
+    <figure>
         <VisibleImage src="path/to/image.jpg" alt="Image description" />
-    </div>
+        <figcaption>An informative caption</figcaption>
+    </figure>
 );
 ```
 
-| Prop                 | Type     | Description                                                                                                                           |
-| -------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **forceShow**        | boolean  | If set to `true`, the image will always show. If set to `false`, either the `initialSrc` will be used or nothing will.                |
-| **loadingClassName** | string   | Specifies a class to apply to the `VisibleImage` before the image has loaded                                                          |
-| **initialSrc**       | string   | An image to use before the image appears on screen. Useful for animation, SEO purposes and to stop the page height jumping.           |
-| **onShown**          | Function | Calls the function when the element becomes visible. Useful for keeping the component as part of the app state alongside `shouldShow` |
+| Prop                 | Type         | Description                                                                                                                 |
+| -------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **forceShow**        | boolean      | If set to `true`, the image will always show. If set to `false`, either the `initialSrc` will be used or nothing will.      |
+| **loadingClassName** | string       | Specifies a class to apply to the `VisibleImage` before the image has loaded                                                |
+| **initialSrc**       | string       | An image to use before the image appears on screen. Useful for animation, SEO purposes and to stop the page height jumping. |
+| **onShown**          | `() => void` | Callback when the element becomes visible. Useful for keeping the visibility as part of the app state alongside `forceShow` |
 
 ---
 
-### Hook
+### Using the hook
 
-```
+There are cases where using an `<img />` tag doesn't fit the purpose, for example when applying a background image to an element. For these cases, the hook can be applied.
+
+```js
 import React, { useRef } from 'react'
 import { useVisible } from `react-visible-image`
 
 const ContentBlock = () => {
+    const imageSet = {
+        initial: '/path/to/small/image',
+        full: '/path/to/full/image',
+    }
     const ref = useRef()
-    const shown = useVisible(ref)
+    const visible = useVisible(ref)
+    const image = visible ? imageSet.full : imageSet.initial;
 
     return (
-        <div ref={ref}>
+        <div ref={ref} style={{backgroundImage: `url('${image}')`}}>
             {shown &&
                 <p>Seen!</p>
             ||
@@ -57,34 +121,48 @@ const ContentBlock = () => {
 }
 ```
 
-## Browser Support
+## Polyfill
 
-Most browsers are supported, and Safari is supporting by importing the optional polyfill. If the `IntersectionObserver` isn't available in a browser, react-visible-image will simple render the image normally.
+If you need to support browsers that don't have the IntersectionObserver API, include the polyfill by installing it using:
 
-### Supported
-
--   Chrome 50+
--   Firefox 55+
--   Edge 15+
--   Opera 47+
-
-### Unsupported
-
--   Safari\* (includes iOS)
--   Internet Explorer
-
-\*Supported using the optional polyfill
-
-### Polyfill
-
-If you need to support Safari, include the polyfill by installing it using:
-
-```
+```sh
 npm install intersection-observer
 ```
 
 Then add it to your app with:
 
+```js
+import "intersection-observer"
 ```
-import 'intersection-observer';
-```
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/amazing-feature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Josh Post - [@posty72](https://twitter.com/posty72)
+
+Project Link: [https://github.com/posty72/react-visible-image](https://github.com/posty72/react-visible-image)
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+-   []()
+-   []()
+-   []()
