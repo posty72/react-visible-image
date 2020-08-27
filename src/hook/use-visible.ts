@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
  * @param node HTML element to watch to become visible
  * @param observerOptions IntersectionObserver options
  */
-export function useShown(
+export function useVisible(
     node: React.MutableRefObject<HTMLElement>,
     observerOptions: IntersectionObserverInit = {}
 ) {

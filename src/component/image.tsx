@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useShown } from "../hook/use-shown"
+import { useVisible } from "../hook/use-visible"
 
 type ImgProps = JSX.IntrinsicElements["img"]
 export interface ImageProps extends ImgProps {
@@ -18,7 +18,7 @@ export const VisibleImage: React.FunctionComponent<ImageProps> = ({
     ...attributes
 }) => {
     const imageRef = React.useRef<HTMLImageElement>()
-    const isVisible = useShown(imageRef)
+    const isVisible = useVisible(imageRef)
 
     const show = isVisible || forceShow
     const initialImageSrc = initialSrc ? initialSrc : ""
