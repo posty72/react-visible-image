@@ -1,37 +1,31 @@
-const webpack = require('webpack');
+const webpack = require("webpack")
+const path = require("path")
+const package = require("./package.json")
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: "./src/index.tsx",
     output: {
-        filename: '[name].js',
-        path: __dirname + '/dist/',
-        libraryTarget: 'commonjs-module'
+        filename: "[name].js",
+        path: path.resolve(__dirname + "/dist"),
+        library: package.name,
+        libraryTarget: "umd"
     },
-    devtool: 'source-map',
+    externals: {
+        react: "react"
+    },
     module: {
         rules: [
             {
-                test: /.tsx?$/,
-                loader: 'awesome-typescript-loader',
+                test: /.(ts|tsx)?$/,
+                loader: "ts-loader",
                 exclude: /(node_modules|dist)/
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'source-map-loader'
             }
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            output: {
-                comments: false,
-                beautify: false,
-            }
-        })
-    ]
-};
+    optimization: {
+        minimize: true
+    }
+}

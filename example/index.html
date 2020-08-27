@@ -1,86 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>My React App</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <title>My React App</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+        />
 
-    <style media="screen">
-        .content {
-            display: flex;
-            align-content: center;
-            flex-direction: column;
-            max-width: 100%;
-        }
+        <style media="screen">
+            .content {
+                display: flex;
+                align-content: center;
+                flex-direction: column;
+                max-width: 100%;
+            }
 
-        .image-container {
-            position: relative;
-            width: 800px;
-            min-height: 100px;
-            max-width: 100%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            background-color: #ededed;
-        }
+            .image-container {
+                position: relative;
+                width: 800px;
+                min-height: 100px;
+                max-width: 100%;
+                margin: 0 auto 20px;
+                overflow: hidden;
+                background-color: #ededed;
+            }
 
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: 1s;
-        }
+            .image-container img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: 1s;
+            }
 
-        .image-container::before {
-            display: block;
-            width: 100%;
-            padding-top: calc(3 / 4 * 100%);
-            content: '';
-        }
+            .image-container::before {
+                display: block;
+                width: 100%;
+                padding-top: calc(3 / 4 * 100%);
+                content: "";
+            }
 
-        .image-container img.is-loading {
-            filter: blur(50px);
-        }
+            .image-container img.is-loading {
+                filter: blur(50px);
+            }
 
-        .background-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-            width: 100%;
-            margin-bottom: 20px;
+            .background-image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 300px;
+                width: 100%;
+                margin-bottom: 20px;
 
-            background-size: cover;
-        }
+                background-size: cover;
+            }
 
-        .background-image.is-loading {
-            position: relative;
-        }
+            .background-image.is-loading {
+                position: relative;
+            }
 
-        .background-image.is-loading::after {
-            position: absolute;
-            top:0;
-            right: 0;
-            width: 100%;
-            height: 100%;
+            .background-image.is-loading::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
 
-            background-color: #0c1e48;
-            content: '';
-        }
+                background-color: #0c1e48;
+                content: "";
+            }
 
-        .background-image p {
-            color: #fff;
-            text-shadow: 0px 0px 5px #2d2d2d;
-            font-size: 72px;
-        }
+            .background-image p {
+                color: #fff;
+                text-shadow: 0px 0px 5px #2d2d2d;
+                font-size: 72px;
+            }
+        </style>
+    </head>
 
-    </style>
-
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/build/app.js"></script>
-  </body>
+    <body>
+        <div id="app"></div>
+    </body>
 </html>

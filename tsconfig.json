@@ -1,24 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dist",
     "removeComments": true,
     "declaration": true,
-    "module": "es6",
+    "module": "CommonJS",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "sourceMap": true,
     "jsx": "react"
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "example",
-    "tests",
-    "dist"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "example", "tests", "dist"]
 }

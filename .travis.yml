@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "12"
+
+install:
+  - npm ci
+
+script:
+  - npm run build
+
+deploy:
+  provider: npm
+  email: $EMAIL_ADDRESS
+  api_key: $NPM_AUTH_TOKEN
+  skip_cleanup: true
+  on:
+    tags: true
+
+notifications:
+  email:
+    recipients:
+      - $EMAIL_ADDRESS
+    on_success: always
+    on_failure: always

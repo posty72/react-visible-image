@@ -1,35 +1,35 @@
 {
   "name": "react-visible-image",
-  "version": "0.5.0",
-  "description": "Highly customizable react component for only images that are in the viewport",
+  "version": "1.0.1",
+  "description": "Show only images that are in the viewport",
   "keywords": [
     "react",
     "component",
     "image",
     "performance"
   ],
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "files": [
     "dist",
     "LICENSE",
     "main.js"
   ],
   "types": "./dist/index.d.ts",
-  "homepage": "https://github.com/pixelfusion/react-visible-image",
+  "homepage": "https://github.com/posty72/react-visible-image",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pixelfusion/react-visible-image"
+    "url": "https://github.com/posty72/react-visible-image"
   },
   "scripts": {
-    "build": "rm -rf ./dist && webpack -p --config webpack.config.js",
+    "build": "tsc",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
     "test": "jest"
   },
-  "author": "Josh Post <josh@pixelfusion.co.nz>",
+  "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pixelfusion/react-visible-image/issues"
+    "url": "https://github.com/posty72/react-visible-image/issues"
   },
   "jest": {
     "transform": {
@@ -45,32 +45,39 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^21.1.5",
-    "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.10",
-    "@types/react-dom": "^16.0.1",
-    "awesome-typescript-loader": "^3.2.3",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.2",
-    "jest": "^21.2.1",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "source-map-loader": "^0.2.2",
-    "ts-jest": "^21.1.3",
-    "ts-loader": "^2.3.7",
-    "tslint": "^5.7.0",
-    "tslint-react": "^3.2.0",
-    "typescript": "^2.5.3",
-    "webpack": "^2.7.0"
+    "@types/react": "^16.9.48",
+    "@types/react-dom": "^16.9.8",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.5",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.2",
+    "tslint": "^5.20.1",
+    "tslint-consistent-codestyle": "^1.16.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^4.2.0",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "peerDependencies": {
-    "react": ">=15.0.0"
+    "react": ">=16.8.0"
+  },
+  "optionalDependencies": {
+    "intersection-observer": "^0.5.0"
   },
   "dependencies": {
-    "@types/enzyme": "^3.1.1",
-    "@types/react-test-renderer": "^16.0.0",
-    "react-test-renderer": "^16.0.0",
-    "tslint-consistent-codestyle": "^1.8.0"
+    "@types/jest": "^26.0.10",
+    "@types/react-test-renderer": "^16.9.3",
+    "jest": "^26.4.2",
+    "react-test-renderer": "^16.13.1"
   }
 }
