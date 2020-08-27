@@ -1,6 +1,6 @@
 {
   "name": "react-visible-image",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "description": "Show only images that are in the viewport",
   "keywords": [
     "react",
