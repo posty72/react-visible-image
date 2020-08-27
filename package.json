@@ -15,20 +15,20 @@
     "main.js"
   ],
   "types": "./dist/index.d.ts",
-  "homepage": "https://github.com/pixelfusion/react-visible-image",
+  "homepage": "https://github.com/posty72/react-visible-image",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pixelfusion/react-visible-image"
+    "url": "https://github.com/posty72/react-visible-image"
   },
   "scripts": {
     "build": "tsc",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build"
   },
-  "author": "Josh Post <josh@pixelfusion.co.nz>",
+  "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pixelfusion/react-visible-image/issues"
+    "url": "https://github.com/posty72/react-visible-image/issues"
   },
   "devDependencies": {
     "@types/react": "^16.9.48",
@@ -55,7 +55,7 @@
     }
   },
   "peerDependencies": {
-    "react": ">=15.0.0"
+    "react": ">=16.8.0"
   },
   "optionalDependencies": {
     "intersection-observer": "^0.5.0"
