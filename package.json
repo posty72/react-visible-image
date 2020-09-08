@@ -1,6 +1,6 @@
 {
   "name": "react-visible-image",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Show only images that are in the viewport",
   "keywords": [
     "react",
@@ -23,14 +23,31 @@
   "scripts": {
     "build": "tsc",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "jest"
   },
   "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/posty72/react-visible-image/issues"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
     "html-webpack-plugin": "^3.2.0",
@@ -59,5 +76,12 @@
   },
   "optionalDependencies": {
     "intersection-observer": "^0.5.0"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.10",
+    "@types/react-test-renderer": "^16.9.3",
+    "jest": "^26.4.2",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.3.0"
   }
 }

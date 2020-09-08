@@ -1,80 +1,45 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import * as VisibleImage from '../../src'
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { VisibleImage, useVisible } from "../../src"
 
-const NUM_IMAGES = 10
-
-const { BackgroundImage, Image } = VisibleImage
-
-class App extends React.Component {
-    renderImages() {
-        const images = []
-        let index = 0
-
-        while (index < NUM_IMAGES) {
-            index++
-
-            images.push(
-                <div className="image-container" key={`image-${index}`}>
-                    <Image
-                        initialImage={`https://picsum.photos/40/30/?image=${index}`}
-                        image={`https://picsum.photos/800/600?image=${index}`}
-                        alt={`Image number ${index}`}
-                    />
-                </div>
-            )
-        }
-
-        return images
-    }
-
-    renderBackgroundImages() {
-        const images = []
-        let index = 0
-
-        while (index < NUM_IMAGES) {
-            index++
-
-            images.push(
-                <BackgroundImage
-                    element="section"
-                    className="background-image"
-                    image={`https://picsum.photos/1500/500?image=${index}`}
-                    initialImage={`https://picsum.photos/15/5?image=${index}`}
-                    onVisible={(data) => console.log(data)}
-                    key={`BackgroundImage-${index}`}
-                >
-                    <p>Content</p>
-                </BackgroundImage>
-            )
-        }
-
-        images.push(
-            <BackgroundImage
-                element="section"
-                className="background-image"
-                image={null}
-                key={`BackgroundImage-${index}`}
-            >
-                <p>Content</p>
-            </BackgroundImage>
-        )
-
-        return images
-    }
-
-    render() {
+const App = () => {
+    const renderImages = () => {
         return (
-            <div className="container-fluid content">
-                <h1>React Visible Images</h1>
-                {this.renderImages()}
-                {this.renderBackgroundImages()}
+            <div>
+                <VisibleImage
+                    initialSrc={`https://picsum.photos/40/30/?image=105`}
+                    src={`https://picsum.photos/800/600?image=105`}
+                    alt={`Image number 105`}
+                />
             </div>
         )
     }
+
+    const renderBackgroundImage = () => {
+        const small = `https://picsum.photos/15/5?image=105`
+        const full = `https://picsum.photos/1500/500?image=105`
+        const ref = React.createRef<HTMLDivElement>()
+        const show = useVisible(ref)
+        const image = show ? full : small
+
+        return (
+            <div
+                ref={ref}
+                className="background-image"
+                style={{ backgroundImage: `url('${image}')` }}
+            >
+                <p>Content</p>
+            </div>
+        )
+    }
+
+    return (
+        <div className="container-fluid content">
+            <h1>React Visible Images</h1>
+            {renderImages()}
+            {renderBackgroundImage()}
+        </div>
+    )
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('app')
-)
+ReactDOM.render(<App />, document.getElementById("app"))
