@@ -9,9 +9,8 @@ export function useVisible(
     node: React.MutableRefObject<HTMLElement>,
     observerOptions: IntersectionObserverInit = {}
 ) {
-    const enabled = typeof globalThis.IntersectionObserver === "function"
-    const defaultVisible = !enabled
-    const [isVisible, setVisibilty] = useState(defaultVisible)
+    const isAvailable = typeof globalThis.IntersectionObserver === "function"
+    const [isVisible, setVisibilty] = useState(false)
     let observer: IntersectionObserver = null
 
     const handleObserverUpdate: IntersectionObserverCallback = entries => {
@@ -22,7 +21,7 @@ export function useVisible(
         }
     }
 
-    if (enabled) {
+    if (isAvailable) {
         observer = new IntersectionObserver(
             handleObserverUpdate,
             observerOptions

@@ -23,15 +23,22 @@ export const VisibleImage: React.FunctionComponent<ImageProps> = ({
     const show = isVisible || forceShow
     const initialImageSrc = initialSrc ? initialSrc : ""
     const imgSrc = show ? attributes.src : initialImageSrc
-    const getClass = () =>
-        !show && loadingClassName
-            ? `${loadingClassName} ${className}`
-            : className
+    const imgClasses = []
+
+    if (className) {
+        imgClasses.push(className)
+    }
+
+    if (!show && loadingClassName) {
+        imgClasses.push(loadingClassName)
+    }
+
+    const imageClass = imgClasses.length > 0 ? imgClasses.join(" ") : undefined
 
     return (
         <img
             {...attributes}
-            className={getClass()}
+            className={imageClass}
             ref={imageRef}
             src={imgSrc}
         />

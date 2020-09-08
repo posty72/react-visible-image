@@ -5,7 +5,6 @@
     "tslint-consistent-codestyle"
   ],
   "rules": {
-    "align": [true, "parameters", "statements"],
     "arrow-return-shorthand": true,
     "ban": false,
     "binary-expression-operand-order": true,
