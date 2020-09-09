@@ -2,12 +2,12 @@
 
 exports[`Image component renders correctly with an image 1`] = `
 <img
-  src="http://www.facebook.com"
+  src="https://twitter.com"
 />
 `;
 
 exports[`Image component renders correctly without an image 1`] = `
 <img
-  src="http://www.facebook.com"
+  src=""
 />
 `;
