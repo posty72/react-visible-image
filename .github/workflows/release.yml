@@ -1,0 +1,22 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    name: Release
+    container: node:12-alpine
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # If you need an NPM release, you can add the NPM_TOKEN
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run release

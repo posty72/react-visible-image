@@ -1,6 +1,6 @@
 {
   "name": "react-visible-image",
-  "version": "1.2.0",
+  "version": "0.0.0-development",
   "description": "Show only images that are in the viewport",
   "keywords": [
     "react",
@@ -24,7 +24,8 @@
     "build": "tsc",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release"
   },
   "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
@@ -50,12 +51,14 @@
     "@babel/preset-typescript": "^7.10.4",
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
+    "cz-conventional-changelog": "^3.3.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.5",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "semantic-release": "^17.2.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.2",
     "tslint": "^5.20.1",
@@ -68,7 +71,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "peerDependencies": {
@@ -83,5 +87,10 @@
     "jest": "^26.4.2",
     "react-test-renderer": "^16.13.1",
     "ts-jest": "^26.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
