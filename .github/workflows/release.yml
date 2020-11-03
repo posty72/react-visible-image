@@ -6,10 +6,14 @@ on:
 jobs:
   release:
     name: Release
-    container: node:12-alpine
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - name: Install dependencies
         run: npm ci
       - name: Build
