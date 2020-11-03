@@ -25,7 +25,7 @@
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
     "test": "jest",
-    "semantic-release": "semantic-release"
+    "release": "semantic-release"
   },
   "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
