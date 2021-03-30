@@ -44,7 +44,7 @@ npm install react-visible-image
 
 ### Using the component
 
-The main output of this package is a simple `VisibleImage` component that you can use as a drop-in replacement for normal `<img />` tags.
+The main output of this package is a simple `VisibleImage` component that you can use as a drop-in replacement for normal `<img />` tags. Any props that can be passed to `<img />` can be passed to `VisibleImage`.
 
 ```js
 import { VisibleImage } from `react-visible-image`
@@ -57,13 +57,13 @@ const ContentBlock = () => (
 );
 ```
 
-| Prop                 | Type                           | Description                                                                                                                      |
-| -------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| **forceShow**        | boolean                        | If set to `true`, the image will always show. If set to `false`, either the `initialSrc` will be used or nothing will.           |
-| **loadingClassName** | string                         | Specifies a class to apply to the `VisibleImage` before the image has loaded                                                     |
-| **initialSrc**       | string                         | An image to use before the image appears on screen. Useful for animation, SEO purposes and to stop the page height jumping.      |
-| **onShown**          | `() => void`                   | Callback when the element becomes visible. Useful for keeping the visibility as part of the app state alongside `forceShow`      |
-| **onShown**          | `(isVisible: boolean) => void` | Callback when the element's visibility changes. Useful for keeping the visibility as part of the app state alongside `forceShow` |
+| Prop                    | Type                           | Description                                                                                                                      |
+| ----------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| **forceShow**           | boolean                        | If set to `true`, the image will always show. If set to `false`, either the `initialSrc` will be used or nothing will.           |
+| **loadingClassName**    | string                         | Specifies a class to apply to the `VisibleImage` before the image has loaded                                                     |
+| **initialSrc**          | string                         | An image to use before the image appears on screen. Useful for animation, SEO purposes and to stop the page height jumping.      |
+| **onShown**             | `() => void`                   | Callback when the element becomes visible. Useful for keeping the visibility as part of the app state alongside `forceShow`      |
+| **onVisibilityChanged** | `(isVisible: boolean) => void` | Callback when the element's visibility changes. Useful for keeping the visibility as part of the app state alongside `forceShow` |
 
 ---
 
