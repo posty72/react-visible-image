@@ -34,7 +34,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.tsx?$": "ts-jest"
     },
     "testMatch": [
       "<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}"
