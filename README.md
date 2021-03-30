@@ -86,7 +86,7 @@ const ContentBlock = () => {
 
     return (
         <div ref={ref} style={{backgroundImage: `url('${image}')`}}>
-            {shown &&
+            {visible &&
                 <p>Seen!</p>
             ||
                 <p>Not seen...</p>
