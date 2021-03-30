@@ -8,13 +8,13 @@
     "image",
     "performance"
   ],
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
-    "dist",
+    "dist/src",
     "LICENSE",
     "main.js"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "homepage": "https://github.com/posty72/react-visible-image",
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
     "test": "jest --coverage",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "prepack": "npm run build"
   },
   "author": "Josh Post <contact+npm@posty.co.nz>",
   "license": "MIT",
