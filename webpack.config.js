@@ -1,6 +1,6 @@
-const webpack = require("webpack")
-const path = require("path")
-const package = require("./package.json")
+const webpack = require("webpack");
+const path = require("path");
+const package = require("./package.json");
 
 module.exports = {
     entry: "./src/index.tsx",
@@ -8,24 +8,24 @@ module.exports = {
         filename: "[name].js",
         path: path.resolve(__dirname + "/dist"),
         library: package.name,
-        libraryTarget: "umd"
+        libraryTarget: "umd",
     },
     externals: {
-        react: "react"
+        react: "react",
     },
     module: {
         rules: [
             {
                 test: /.(ts|tsx)?$/,
                 loader: "ts-loader",
-                exclude: /(node_modules|dist)/
-            }
-        ]
+                exclude: /(node_modules|dist)/,
+            },
+        ],
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".json"],
     },
     optimization: {
-        minimize: true
-    }
-}
+        minimize: true,
+    },
+};

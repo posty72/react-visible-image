@@ -1,39 +1,37 @@
-import * as React from "react"
-import { useVisible } from "../hook/use-visible"
+import * as React from "react";
+import { useVisible } from "../hook/use-visible";
 
-type ImgProps = JSX.IntrinsicElements["img"]
+type ImgProps = JSX.IntrinsicElements["img"];
 export interface ImageProps extends ImgProps {
-    onShown?: () => void
-    initialSrc?: string
-    forceShow?: boolean
-    loadingClassName?: string
+    initialSrc?: string;
+    forceShow?: boolean;
+    loadingClassName?: string;
 }
 
-export const VisibleImage: React.FunctionComponent<ImageProps> = ({
+export const VisibleImage = ({
     initialSrc,
     forceShow,
     loadingClassName,
     className,
-    onShown,
     ...attributes
-}) => {
-    const imageRef = React.useRef<HTMLImageElement>()
-    const isVisible = useVisible(imageRef)
+}: ImageProps) => {
+    const imageRef = React.useRef<HTMLImageElement>();
+    const isVisible = useVisible(imageRef);
 
-    const show = isVisible || forceShow
-    const initialImageSrc = initialSrc ? initialSrc : ""
-    const imgSrc = show ? attributes.src : initialImageSrc
-    const imgClasses = []
+    const show = isVisible || forceShow;
+    const initialImageSrc = initialSrc ? initialSrc : "";
+    const imgSrc = show ? attributes.src : initialImageSrc;
+    const imgClasses = [];
 
     if (className) {
-        imgClasses.push(className)
+        imgClasses.push(className);
     }
 
     if (!show && loadingClassName) {
-        imgClasses.push(loadingClassName)
+        imgClasses.push(loadingClassName);
     }
 
-    const imageClass = imgClasses.length > 0 ? imgClasses.join(" ") : undefined
+    const imageClass = imgClasses.length > 0 ? imgClasses.join(" ") : undefined;
 
     return (
         <img
@@ -42,5 +40,5 @@ export const VisibleImage: React.FunctionComponent<ImageProps> = ({
             ref={imageRef}
             src={imgSrc}
         />
-    )
-}
+    );
+};

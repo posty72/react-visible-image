@@ -6,3 +6,6 @@ example
 webpack.config.js
 tests
 .babelrc
+coverage
+test-results
+.github

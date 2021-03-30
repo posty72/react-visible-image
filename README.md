@@ -106,7 +106,7 @@ npm install intersection-observer
 Then add it to your app with:
 
 ```js
-import "intersection-observer"
+import "intersection-observer";
 ```
 
 ## Contributing

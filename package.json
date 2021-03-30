@@ -24,7 +24,7 @@
     "build": "tsc",
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
-    "test": "jest",
+    "test": "jest --coverage",
     "release": "semantic-release"
   },
   "author": "Josh Post <contact+npm@posty.co.nz>",
@@ -36,38 +36,69 @@
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testMatch": [
+      "<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js",
       "jsx",
       "json"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "json-summary"
     ]
   },
+  "jest-junit": {
+    "outputDirectory": "test-results",
+    "outputName": "junit.xml"
+  },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-typescript": "^7.10.4",
-    "@types/react": "^16.9.48",
-    "@types/react-dom": "^16.9.8",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-typescript": "^7.13.0",
+    "@testing-library/react": "^11.2.6",
+    "@types/jest": "^26.0.22",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
     "cz-conventional-changelog": "^3.3.0",
-    "html-webpack-plugin": "^3.2.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "html-webpack-plugin": "^5.3.1",
     "husky": "^4.2.5",
-    "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "semantic-release": "^17.2.2",
-    "source-map-loader": "^0.2.4",
-    "ts-loader": "^6.2.2",
-    "tslint": "^5.20.1",
-    "tslint-consistent-codestyle": "^1.16.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.2.0",
-    "typescript": "^3.9.7",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "jest": "^26.6.3",
+    "jest-junit": "^12.0.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "semantic-release": "^17.4.2",
+    "source-map-loader": "^2.0.1",
+    "ts-jest": "^26.5.4",
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.3",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
   },
   "husky": {
     "hooks": {
@@ -80,13 +111,6 @@
   },
   "optionalDependencies": {
     "intersection-observer": "^0.5.0"
-  },
-  "dependencies": {
-    "@types/jest": "^26.0.10",
-    "@types/react-test-renderer": "^16.9.3",
-    "jest": "^26.4.2",
-    "react-test-renderer": "^16.13.1",
-    "ts-jest": "^26.3.0"
   },
   "config": {
     "commitizen": {

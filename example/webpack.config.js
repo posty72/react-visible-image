@@ -1,12 +1,11 @@
-const webpack = require("webpack")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
     entry: p("./src/app.tsx"),
     output: {
         filename: "app.[hash].js",
-        path: p("./build/")
+        path: p("./build/"),
     },
     devtool: "source-map",
     module: {
@@ -16,19 +15,19 @@ module.exports = {
                 loader: "ts-loader",
                 exclude: /node_modules/,
                 options: {
-                    configFile: p("./tsconfig.json")
-                }
-            }
-        ]
+                    configFile: p("./tsconfig.json"),
+                },
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             inject: "body",
-            template: "./example/index.html"
-        })
-    ]
-}
+            template: "./example/index.html",
+        }),
+    ],
+};
 
 function p(f) {
-    return path.resolve(__dirname, f)
+    return path.resolve(__dirname, f);
 }

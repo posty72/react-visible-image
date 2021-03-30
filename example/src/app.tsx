@@ -1,6 +1,6 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
-import { VisibleImage, useVisible } from "../../src"
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { VisibleImage, useVisible } from "../../src";
 
 const App = () => {
     const renderImages = () => {
@@ -12,15 +12,15 @@ const App = () => {
                     alt={`Image number 105`}
                 />
             </div>
-        )
-    }
+        );
+    };
 
     const renderBackgroundImage = () => {
-        const small = `https://picsum.photos/15/5?image=105`
-        const full = `https://picsum.photos/1500/500?image=105`
-        const ref = React.createRef<HTMLDivElement>()
-        const show = useVisible(ref)
-        const image = show ? full : small
+        const small = `https://picsum.photos/15/5?image=105`;
+        const full = `https://picsum.photos/1500/500?image=105`;
+        const ref = React.createRef<HTMLDivElement>();
+        const show = useVisible(ref);
+        const image = show ? full : small;
 
         return (
             <div
@@ -30,8 +30,8 @@ const App = () => {
             >
                 <p>Content</p>
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <div className="container-fluid content">
@@ -39,7 +39,7 @@ const App = () => {
             {renderImages()}
             {renderBackgroundImage()}
         </div>
-    )
-}
+    );
+};
 
-ReactDOM.render(<App />, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById("app"));
