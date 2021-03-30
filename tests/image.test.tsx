@@ -10,10 +10,13 @@ describe("Image component", () => {
     beforeEach(() => {
         /* eslint-disable @typescript-eslint/no-unused-vars */
         function MockIntersectionObserver(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            this: any,
             callback: IntersectionObserverCallback,
             _config: IntersectionObserverInit
         ) {
             this.observe = (_element: HTMLElement) => {
+                // TODO: Come up with a controllable trigger
                 setTimeout(
                     () =>
                         callback(
@@ -64,7 +67,7 @@ describe("Image component", () => {
             )
             .toTree();
 
-        const image = element.rendered as renderer.ReactTestRendererTree;
+        const image = element?.rendered as renderer.ReactTestRendererTree;
 
         expect(image.props.className.includes("is-loading")).toBe(true);
     });
@@ -86,8 +89,8 @@ describe("Image component", () => {
 
         expect(image.getAttribute("src")).toBe("http://gitlab.com");
 
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
         await act(async () => {
-            // Wait for the setTimeout in the mock to be called, just needs to be made async
             await sleep(0);
         });
 
@@ -110,8 +113,8 @@ describe("Image component", () => {
 
         expect(image.getAttribute("src")).toBe("http://gitlab.com");
 
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
         await act(async () => {
-            // Wait for the setTimeout in the mock to be called, just needs to be made async
             await sleep(0);
         });
 
@@ -134,5 +137,53 @@ describe("Image component", () => {
         const image = container.getElementsByClassName("test")[0];
 
         expect(image.getAttribute("src")).toBe("http://github.com");
+    });
+
+    it("the 'onShown' callback should be called", async () => {
+        const threshold = 100;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc="http://gitlab.com"
+                src="http://github.com"
+                onShown={callback}
+            />
+        );
+
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+
+        expect(callback).toHaveBeenCalled();
+    });
+
+    it("the 'onVisibilityChanged' callback should be called", async () => {
+        const threshold = 100;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc="http://gitlab.com"
+                src="http://github.com"
+                onVisibilityChanged={callback}
+            />
+        );
+
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+
+        expect(callback).toHaveBeenCalledWith(true);
     });
 });

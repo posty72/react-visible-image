@@ -4,10 +4,11 @@ module.exports = {
         project: ["tsconfig.json"],
         sourceType: "module",
     },
-    plugins: ["eslint-plugin-import", "@typescript-eslint"],
+    plugins: ["import", "react", "react-hooks", "@typescript-eslint"],
     extends: [
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:import/recommended",
         "prettier",
     ],

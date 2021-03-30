@@ -6,6 +6,8 @@ export interface ImageProps extends ImgProps {
     initialSrc?: string;
     forceShow?: boolean;
     loadingClassName?: string;
+    onShown?: () => void;
+    onVisibilityChanged?: (isVisible: boolean) => void;
 }
 
 export const VisibleImage = ({
@@ -13,15 +15,27 @@ export const VisibleImage = ({
     forceShow,
     loadingClassName,
     className,
+    onShown,
+    onVisibilityChanged,
     ...attributes
 }: ImageProps) => {
-    const imageRef = React.useRef<HTMLImageElement>();
+    const imageRef = React.useRef<HTMLImageElement>(null);
     const isVisible = useVisible(imageRef);
 
     const show = isVisible || forceShow;
     const initialImageSrc = initialSrc ? initialSrc : "";
     const imgSrc = show ? attributes.src : initialImageSrc;
     const imgClasses = [];
+
+    React.useEffect(() => {
+        if (onVisibilityChanged) {
+            onVisibilityChanged(isVisible);
+        }
+
+        if (isVisible && onShown) {
+            onShown();
+        }
+    }, [isVisible, onShown, onVisibilityChanged]);
 
     if (className) {
         imgClasses.push(className);
