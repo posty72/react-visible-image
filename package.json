@@ -25,6 +25,7 @@
     "build:example": "npm run build && webpack --config example/webpack.config.js",
     "prepare": "npm run build",
     "test": "jest --coverage",
+    "test:types": "tsc --noEmit",
     "release": "semantic-release",
     "prepack": "npm run build"
   },
