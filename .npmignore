@@ -3,7 +3,6 @@ node_modules
 .idea
 src
 example
-webpack.config.js
 tests
 .babelrc
 coverage
