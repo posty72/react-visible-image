@@ -1,8 +1,12 @@
+/* eslint-disable max-lines */
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import { render, act } from "@testing-library/react";
 import { VisibleImage } from "../src";
 import { sleep } from "./utility/sleep";
+
+const INITIAL_IMAGE = "http://example.com";
+const FULL_IMAGE = "http://reactjs.org";
 
 describe("Image component", () => {
     let intersectionRatio = 0;
@@ -39,10 +43,7 @@ describe("Image component", () => {
     it("renders correctly with an image", () => {
         const tree = renderer
             .create(
-                <VisibleImage
-                    initialSrc="https://twitter.com"
-                    src="http://www.facebook.com"
-                />
+                <VisibleImage initialSrc={INITIAL_IMAGE} src={FULL_IMAGE} />
             )
             .toJSON();
 
@@ -51,7 +52,7 @@ describe("Image component", () => {
 
     it("renders correctly without an image", () => {
         const tree = renderer
-            .create(<VisibleImage src="http://www.facebook.com" />)
+            .create(<VisibleImage src={FULL_IMAGE} />)
             .toJSON();
 
         expect(tree).toMatchSnapshot();
@@ -62,7 +63,7 @@ describe("Image component", () => {
             .create(
                 <VisibleImage
                     loadingClassName="is-loading"
-                    src="http://github.com"
+                    src={INITIAL_IMAGE}
                 />
             )
             .toTree();
@@ -80,21 +81,21 @@ describe("Image component", () => {
             <VisibleImage
                 className="test"
                 loadingClassName="is-loading"
-                initialSrc="http://gitlab.com"
-                src="http://github.com"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
             />
         );
 
         const image = container.getElementsByClassName("test")[0];
 
-        expect(image.getAttribute("src")).toBe("http://gitlab.com");
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
 
         // Wait for the setTimeout in the mock to be called, just needs to be made async
         await act(async () => {
             await sleep(0);
         });
 
-        expect(image.getAttribute("src")).toBe("http://github.com");
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
     });
 
     it("should not show the src image on no intersect", async () => {
@@ -104,21 +105,21 @@ describe("Image component", () => {
             <VisibleImage
                 className="test"
                 loadingClassName="is-loading"
-                initialSrc="http://gitlab.com"
-                src="http://github.com"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
             />
         );
 
         const image = container.getElementsByClassName("test")[0];
 
-        expect(image.getAttribute("src")).toBe("http://gitlab.com");
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
 
         // Wait for the setTimeout in the mock to be called, just needs to be made async
         await act(async () => {
             await sleep(0);
         });
 
-        expect(image.getAttribute("src")).toBe("http://gitlab.com");
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
     });
 
     it("should not run if the intersection observer is not available", async () => {
@@ -129,14 +130,14 @@ describe("Image component", () => {
             <VisibleImage
                 className="test"
                 loadingClassName="is-loading"
-                initialSrc="http://gitlab.com"
-                src="http://github.com"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
             />
         );
 
         const image = container.getElementsByClassName("test")[0];
 
-        expect(image.getAttribute("src")).toBe("http://github.com");
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
     });
 
     it("the 'onShown' callback should be called", async () => {
@@ -149,9 +150,33 @@ describe("Image component", () => {
             <VisibleImage
                 className="test"
                 loadingClassName="is-loading"
-                initialSrc="http://gitlab.com"
-                src="http://github.com"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
                 onShown={callback}
+            />
+        );
+
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+
+        expect(callback).toHaveBeenCalled();
+    });
+
+    it("the 'onAppear' callback should be called", async () => {
+        const threshold = 100;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
+                onAppear={callback}
             />
         );
 
@@ -173,8 +198,8 @@ describe("Image component", () => {
             <VisibleImage
                 className="test"
                 loadingClassName="is-loading"
-                initialSrc="http://gitlab.com"
-                src="http://github.com"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
                 onVisibilityChanged={callback}
             />
         );
@@ -185,5 +210,113 @@ describe("Image component", () => {
         });
 
         expect(callback).toHaveBeenCalledWith(true);
+    });
+
+    it("should show when 'show' is true", async () => {
+        const threshold = 10;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        const { container } = render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
+                onVisibilityChanged={callback}
+                show
+            />
+        );
+
+        const image = container.getElementsByClassName("test")[0];
+
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
+    });
+
+    it("should not show when 'show' is false", async () => {
+        const threshold = 10;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        const { container } = render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
+                onVisibilityChanged={callback}
+                show={false}
+            />
+        );
+
+        const image = container.getElementsByClassName("test")[0];
+
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
+    });
+
+    it("should show when 'forceShow' is true", async () => {
+        const threshold = 10;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        const { container } = render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
+                onVisibilityChanged={callback}
+                forceShow
+            />
+        );
+
+        const image = container.getElementsByClassName("test")[0];
+
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+        expect(image.getAttribute("src")).toBe(FULL_IMAGE);
+    });
+
+    it("should not show when 'forceShow' is false", async () => {
+        const threshold = 10;
+        const callback = jest.fn(() => void null);
+
+        intersectionRatio = threshold;
+
+        const { container } = render(
+            <VisibleImage
+                className="test"
+                loadingClassName="is-loading"
+                initialSrc={INITIAL_IMAGE}
+                src={FULL_IMAGE}
+                onVisibilityChanged={callback}
+                forceShow={false}
+            />
+        );
+
+        const image = container.getElementsByClassName("test")[0];
+
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
+        // Wait for the setTimeout in the mock to be called, just needs to be made async
+        await act(async () => {
+            await sleep(0);
+        });
+        expect(image.getAttribute("src")).toBe(INITIAL_IMAGE);
     });
 });

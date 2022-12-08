@@ -2,7 +2,7 @@
 
 exports[`Image component renders correctly with an image 1`] = `
 <img
-  src="https://twitter.com"
+  src="http://example.com"
 />
 `;
 

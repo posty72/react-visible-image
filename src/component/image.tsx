@@ -4,27 +4,39 @@ import { useVisible } from "../hook/use-visible";
 type ImgProps = JSX.IntrinsicElements["img"];
 export interface ImageProps extends ImgProps {
     initialSrc?: string;
-    forceShow?: boolean;
+    show?: boolean;
     loadingClassName?: string;
-    onShown?: () => void;
+    onAppear?: () => void;
     onVisibilityChanged?: (isVisible: boolean) => void;
+
+    /**
+     * @deprecated Use 'show' instead
+     */
+    forceShow?: boolean;
+    /**
+     * @deprecated Use 'onAppear' instead
+     */
+    onShown?: () => void;
 }
 
 export const VisibleImage = ({
     initialSrc,
-    forceShow,
+    show,
     loadingClassName,
     className,
-    onShown,
+    onAppear,
     onVisibilityChanged,
+    forceShow,
+    onShown,
     ...attributes
 }: ImageProps) => {
     const imageRef = React.useRef<HTMLImageElement>(null);
     const isVisible = useVisible(imageRef);
+    const onAppearCallback = onAppear ?? onShown;
 
-    const show = isVisible || forceShow;
+    const isShown = show ?? forceShow ?? isVisible;
     const initialImageSrc = initialSrc ? initialSrc : "";
-    const imgSrc = show ? attributes.src : initialImageSrc;
+    const imgSrc = isShown ? attributes.src : initialImageSrc;
     const imgClasses = [];
 
     React.useEffect(() => {
@@ -32,16 +44,16 @@ export const VisibleImage = ({
             onVisibilityChanged(isVisible);
         }
 
-        if (isVisible && onShown) {
-            onShown();
+        if (isVisible && onAppearCallback) {
+            onAppearCallback();
         }
-    }, [isVisible, onShown, onVisibilityChanged]);
+    }, [isVisible, onAppearCallback, onVisibilityChanged]);
 
     if (className) {
         imgClasses.push(className);
     }
 
-    if (!show && loadingClassName) {
+    if (!isShown && loadingClassName) {
         imgClasses.push(loadingClassName);
     }
 
