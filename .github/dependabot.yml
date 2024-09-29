@@ -8,9 +8,4 @@ updates:
       prefix: fix
       prefix-development: chore
       include: scope
-minApprovals:
-  NONE: 0
-requiredLabels:
-  - dependencies
-updateBranch: true
-mergeMethod: rebase
+      
