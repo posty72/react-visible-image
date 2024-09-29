@@ -114,9 +114,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  {
   "release": {
     "branches": ["main"]
   }
-}
 }
